@@ -95,18 +95,20 @@ class acf_field_accordion extends acf_field {
 		?>
 		<script>
 			(function($){				
-				var ID = '<?php echo $field['ID'] ?>';
-				jQuery("#"+ID+"accordion-select").select2({
-					formatResult: format,
-					formatSelection: format,
-				});
-				function format(o) {
-					if (!o.id) {
-						return o.text; // optgroup
-					} else {
-						return "<i class='accordion dashicons " + o.id + "' style='margin-right: 5px;'></i>" + o.text;
+				$(window).load(function () {
+					var ID = '<?php echo $field['ID'] ?>';
+					jQuery("#"+ID+"accordion-select").select2({
+						formatResult: format,
+						formatSelection: format,
+					});
+					function format(o) {
+						if (!o.id) {
+							return o.text; // optgroup
+						} else {
+							return "<i class='accordion dashicons " + o.id + "' style='margin-right: 5px;'></i>" + o.text;
+						}
 					}
-				}
+				});
 			})(jQuery);
 		</script>
 		<?php
